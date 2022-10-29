@@ -1,23 +1,28 @@
 {
-    "family": FAMILY,
+    "family": "jenkins-dockerECS",
     "containerDefinitions": [
         {
-            "image": "REPOSITORY_URI:BUILD_NUMBER",
-            "name": NAME,
-	    "essential": true,
+            "name": "jenkins-dockerECS",
+            "image": "860269274803.dkr.ecr.us-east-1.amazonaws.com/nodejs-alb",
+            "cpu": 0,
+            "memory": 512,
+            "memoryReservation": 128,
             "portMappings": [
                 {
                     "containerPort": 3000,
-                    "hostPort": 3000
+                    "hostPort": 3000,
+                    "protocol": "tcp"
                 }
-            ]
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": []
         }
     ],
-    "cpu": "256",
-    "memory": "512",
+    "taskRoleArn": "arn:aws:iam::860269274803:role/IAMrole-srilakshmi",
+    "executionRoleArn": "arn:aws:iam::860269274803:role/IAMrole-srilakshmi",
     "requiresCompatibilities": [
-             "FARGATE"
-    ],
-    "networkMode": "awsvpc",
-    "executionRoleArn": ROLE_ARN 
+        "EC2"
+    ]
 }
